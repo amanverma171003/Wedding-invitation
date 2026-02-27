@@ -1,0 +1,714 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: auto;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    background: #fdf6ec;
+}
+
+
+
+/* =========================
+   GLOBAL SECTION STRUCTURE
+========================= */
+
+section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 8%;
+    overflow: hidden;
+}
+
+/* Inner content wrapper */
+.section-inner {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+    z-index: 2;
+    transition: 
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Section Titles */
+.section-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.5rem;
+    color: #7a5c2e;
+}
+
+
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero {
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    background: url("assets/images/herobg.png") center/cover no-repeat;
+    z-index: 1;
+    transition: transform 0.2s ease-out;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        rgba(0,0,0,0.18),
+        rgba(0,0,0,0.28)
+    );
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    color: white;
+}
+
+/* Typography */
+
+.couple-name {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4.8rem;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    color: #fffaf2;
+    text-shadow:
+        0 4px 15px rgba(0,0,0,0.7),
+        0 0 25px rgba(255,215,120,0.4),
+        0 0 45px rgba(255,215,120,0.25);
+}
+
+.tagline {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    color: #fff4df;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.7);
+}
+
+.sub-text {
+    font-size: 1rem;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    color: #ffe8c7;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+
+/* Button */
+
+.save-btn {
+    padding: 14px 38px;
+    border-radius: 40px;
+    border: 1px solid rgba(255,255,255,0.7);
+    background: linear-gradient(
+        135deg,
+        rgba(255,215,120,0.9),
+        rgba(198,167,94,0.9)
+    );
+    color: #2b1a08;
+    font-weight: 600;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: 0.4s ease;
+    box-shadow:
+        0 10px 30px rgba(255,215,120,0.4),
+        0 0 40px rgba(255,215,120,0.2);
+}
+
+.save-btn:hover {
+    transform: translateY(-4px);
+}
+
+
+
+/* =========================
+   PARTICLES
+========================= */
+
+.particles {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.particles span {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: gold;
+    border-radius: 50%;
+    opacity: 0.4;
+    animation: float 12s linear infinite;
+}
+
+@keyframes float {
+    from { transform: translateY(100vh); }
+    to { transform: translateY(-10vh); }
+}
+
+
+
+/* =========================
+   JOURNEY STACK SECTION
+========================= */
+
+.journey-stack-section {
+    height: 100vh;
+    position: relative;
+    background: url("assets/images/j2.png") center/cover no-repeat;
+    overflow: hidden;
+    display: block; /* override flex */
+    padding: 0;
+}
+
+/* Center container */
+.stack-cards-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Card stack wrapper */
+.stack-cards {
+    position: relative;
+    width: 650px;
+    height: 420px;
+}
+
+
+
+
+/* =========================
+   INVITATION STYLE STACK CARD
+========================= */
+
+.stack-card {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-style: preserve-3d;
+    transition: transform 0.7s cubic-bezier(.22,1,.36,1),
+                opacity 0.6s ease;
+}
+
+.invitation-card {
+    position: relative;
+    width: 90%;
+    max-width: 850px;
+    height: auto;
+    padding: 70px 80px;
+
+    background: linear-gradient(
+        135deg,
+        #fff9f0,
+        #fdf2e4
+    );
+
+    overflow: visible;
+
+    border-radius: 30px;
+
+    border: 2px solid #e7c79f;
+
+    box-shadow:
+        0 40px 80px rgba(140, 100, 40, 0.25);
+
+    text-align: center;
+
+    background-image: 
+        url("assets/images/journey.png")
+        linear-gradient(135deg, #fff9f0, #fdf2e4);
+
+    background-size: cover;
+    background-blend-mode: multiply;
+}
+
+/* Elegant Double Border Effect */
+.invitation-card::before {
+    content: "";
+    position: absolute;
+    inset: 15px;
+    border-radius: 24px;
+    border: 1px solid #e7c79f;
+    pointer-events: none;
+}
+
+.invitation-card::after {
+    content: "";
+    position: absolute;
+    top: -150%;
+    left: -50%;
+    width: 200%;
+    height: 300%;
+    background: linear-gradient(
+        120deg,
+        transparent 40%,
+        rgba(255, 215, 120, 0.3) 50%,
+        transparent 60%
+    );
+    transform: rotate(25deg);
+    animation: shimmer 6s infinite linear;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%) rotate(25deg); }
+    100% { transform: translateX(100%) rotate(25deg); }
+}
+
+.invite-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+    color: #7a4d2c;
+    margin-bottom: 15px;
+}
+
+.heart {
+    font-size: 20px;
+    color: #d89c7a;
+    margin-bottom: 20px;
+}
+
+.invite-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: #6a4a2f;
+    line-height: 1.6;
+}
+
+.counter {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #b68b5d;
+    letter-spacing: 2px;
+}
+
+
+
+.floral {
+    position: absolute;
+    width: 400px;
+    pointer-events: none;
+}
+
+.floral-tl {
+    top: -40px;
+    left: -40px;
+}
+
+.floral-br {
+    bottom: -40px;
+    right: -25px;
+    transform: rotate(180deg);
+}
+
+
+.journey-stack-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 20% 40%, rgba(255,255,255,0.4) 2px, transparent 3px),
+        radial-gradient(circle at 70% 70%, rgba(255,255,255,0.3) 2px, transparent 3px);
+    background-size: 200px 200px;
+    animation: dustMove 40s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes dustMove {
+    from { background-position: 0 0, 100px 100px; }
+    to { background-position: 200px 200px, 300px 300px; }
+}
+
+.journey-stack-section {
+    background-size: 105%;
+    animation: bgZoom 20s ease-in-out infinite alternate;
+}
+
+@keyframes bgZoom {
+    from { background-size: 105%; }
+    to { background-size: 115%; }
+}
+
+.stack-cards-container {
+    perspective: 1200px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   EVENTS – IMAGE REVEAL STYLE
+========================= */
+
+.events-section {
+  min-height: 100vh;
+  padding: 100px 8%;
+  position: relative;
+  background: url("assets/images/journey.png") center/cover no-repeat;
+}
+
+.events-container {
+  margin-top: 80px;
+  display: grid;
+  gap: 40px;
+}
+
+/* Responsive Layout */
+@media (min-width: 1200px) {
+  .events-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+  .events-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 767px) {
+  .events-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Card */
+.event-card {
+  position: relative;
+  height: 380px;
+  border-radius: 25px;
+  overflow: hidden;
+  background: linear-gradient(145deg, #fff9f0, #fdf1e4);
+  box-shadow: 0 20px 60px rgba(150,110,60,0.25);
+  transition: 0.6s cubic-bezier(.22,1,.36,1);
+}
+
+/* Text Content */
+.event-content {
+  position: relative;
+  z-index: 2;
+  padding: 50px 30px;
+  text-align: center;
+  transition: 0.6s ease;
+}
+
+.event-content h3 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.2rem;
+  color: #7a4d2c;
+  margin-bottom: 20px;
+}
+
+.event-content p {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: #6a4a2f;
+}
+
+/* Image container */
+.event-image {
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: 0.8s cubic-bezier(.22,1,.36,1);
+  z-index: 1;
+}
+
+.event-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Soft overlay for readability */
+.event-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.4),
+    rgba(0,0,0,0.05)
+  );
+}
+
+/* Hover Effect */
+.event-card:hover .event-image {
+  bottom: 0;
+}
+
+.event-card:hover .event-content {
+  transform: translateY(-40px);
+  color: white;
+}
+
+.event-card:hover h3,
+.event-card:hover p {
+  color: #fffaf2;
+}
+
+
+
+
+
+/* =========================
+   ORNAMENT CORNERS
+========================= */
+
+.ornament {
+  position: absolute;
+  width: 140px; /* adjust size here */
+  z-index: 3;
+  pointer-events: none;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Top Left */
+.ornament-tl {
+  top: 0px;
+  left: -10px;
+}
+
+/* Bottom Right (rotated version) */
+.ornament-br {
+  bottom: 5px;
+  right: -10px;
+  transform: rotate(180deg);
+}
+
+/* Smooth fade + slight shrink on hover */
+.event-card:hover .ornament {
+  opacity: 0;
+  transform: scale(0.8) rotate(180deg);
+}
+
+/* Fix transform conflict for top-left */
+.event-card:hover .ornament-tl {
+  transform: scale(0.8);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   CAPTURED MOMENTS CLEAN VERSION
+========================= */
+
+.captured-moments {
+  position: relative;
+  width: 100vw;
+  height: 90vh;
+  overflow-x: hidden;
+  overflow-y: visible;
+  padding-top: 80px;
+  background: url("assets/images/journey.png") center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Title */
+.captured-moments .section-title {
+  font-size: 3rem;
+  margin-bottom: 60px;
+  color: #7a4e2b;
+}
+
+/* Gallery container */
+.horizontal-gallery {
+  overflow-x: hidden;
+  overflow-y: visible;
+  padding: 100px 0;
+}
+
+/* Moving track */
+.gallery-track {
+  display: flex;
+  gap: 60px;
+  width: max-content;
+  animation: moveGallery 40s linear infinite;
+}
+
+/* Pause on hover */
+.horizontal-gallery:hover .gallery-track {
+  animation-play-state: paused;
+}
+
+/* Strong clean stagger */
+.gallery-card:nth-child(1) { transform: translateY(-80px); }
+.gallery-card:nth-child(2) { transform: translateY(40px); }
+.gallery-card:nth-child(3) { transform: translateY(-40px); }
+.gallery-card:nth-child(4) { transform: translateY(70px); }
+.gallery-card:nth-child(5) { transform: translateY(-20px); }
+
+/* Repeat pattern for duplicated set */
+.gallery-card:nth-child(6) { transform: translateY(-80px); }
+.gallery-card:nth-child(7) { transform: translateY(40px); }
+.gallery-card:nth-child(8) { transform: translateY(-40px); }
+.gallery-card:nth-child(9) { transform: translateY(70px); }
+.gallery-card:nth-child(10) { transform: translateY(-20px); }
+
+.gallery-card.small {
+  width: 200px;
+  height: 280px;
+}
+
+.gallery-card.medium {
+  width: 240px;
+  height: 320px;
+}
+
+.gallery-card.large {
+  width: 280px;
+  height: 360px;
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Light hover effect */
+.gallery-card:hover {
+  transform: translateY(-10px) scale(1.05);
+}
+
+/* Infinite scroll animation */
+@keyframes moveGallery {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   OTHER SECTIONS BACKGROUND
+========================= */
+
+.events-sections,
+.gallery,
+.venue,
+.countdown {
+    background: url("assets/images/journey.png") center/cover no-repeat;
+}
+
+
+
+
+
+
+
+
+
+
+.fairy-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.fairy-particle {
+    position: absolute;
+    pointer-events: none;
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        rgba(255,255,255,1) 0%,         /* white core */
+        rgba(255,240,180,0.9) 25%,
+        rgba(255,215,120,0.6) 50%,
+        rgba(255,215,120,0.2) 70%,
+        transparent 100%
+    );
+
+    box-shadow:
+    0 0 6px rgba(255,255,255,0.8),
+    0 0 12px rgba(255,230,150,0.6),
+    0 0 25px rgba(255,215,120,0.4);
+
+    mix-blend-mode: screen;  /* 🔥 makes it light-like */
+    animation: glitterFade 1.4s ease-out forwards,
+               glitterFlicker 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes glitterFade {
+    0% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.4) translateY(-30px);
+    }
+}
+
+@keyframes glitterFlicker {
+    from { filter: brightness(1); }
+    to   { filter: brightness(1.8); }
+}
