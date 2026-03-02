@@ -1,6 +1,4 @@
-/* =========================
-   LENIS SETUP
-========================= */
+/* LENIS SETUP */
 
 const lenis = new Lenis({
   duration: 1.4,
@@ -18,9 +16,7 @@ requestAnimationFrame(raf);
 
 
 
-/* =========================
-   HERO PARALLAX
-========================= */
+/* HERO PARALLAX and depth */
 
 const hero = document.querySelector(".hero");
 const heroBg = document.querySelector(".hero-bg");
@@ -42,9 +38,7 @@ if (hero && heroBg) {
 
 
 
-/* =========================
-   PARTICLES
-========================= */
+/* PARTICLES on hero */
 
 const particlesContainer = document.querySelector(".particles");
 
@@ -83,54 +77,6 @@ prevBtn.addEventListener("click", () => {
 
 
 
-/* =========================
-   CINEMATIC SCROLL EFFECT
-========================= */
-
-// const sections = document.querySelectorAll("section");
-
-// function cinematicScroll() {
-
-//   const windowH = window.innerHeight;
-
-//   sections.forEach(section => {
-
-//     if (section.classList.contains("journey-stack-section")) return;
-
-//     const inner = section.querySelector(".section-inner");
-//     if (!inner) return;
-
-//     const rect = section.getBoundingClientRect();
-
-//     if (rect.top < windowH && rect.bottom > 0) {
-
-//       const progress = rect.top / windowH;
-
-//       inner.style.transform =
-//         `translateY(${progress * 30}px) scale(${1 - Math.abs(progress) * 0.03})`;
-
-//     } else {
-//       inner.style.transform = "translateY(0px) scale(1)";
-//     }
-
-//   });
-
-// }
-
-// lenis.on("scroll", cinematicScroll);
-// cinematicScroll();
-
-
-
-
-
-
-
-
-
-
-
-
 
 const fairyContainer = document.querySelector(".fairy-container");
 
@@ -162,16 +108,7 @@ window.addEventListener("mousemove", (e) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
+// countdown 
 const weddingDate = new Date("June 16, 2026 00:00:00").getTime();
 
 const timer = setInterval(function () {
