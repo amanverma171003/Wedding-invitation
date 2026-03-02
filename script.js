@@ -59,92 +59,27 @@ if (particlesContainer) {
 }
 
 
-
-/* =========================
-   STACK SCROLL LOCK SYSTEM
-========================= */
-
-const stackSection = document.querySelector(".journey-stack-section");
+const slider = document.querySelector(".stack-cards");
 const cards = document.querySelectorAll(".stack-card");
+const nextBtn = document.querySelector(".next");
+const prevBtn = document.querySelector(".prev");
 
 let currentIndex = 0;
-let locked = false;
-let animating = false;
+const totalCards = cards.length;
 
-/* Initial card state */
-function renderCards() {
-  cards.forEach((card, index) => {
-    const offset = index - currentIndex;
-
-    card.style.transform = `
-      translateY(${offset * 20}px)
-      rotateY(${offset * 12}deg)
-      scale(${1 - Math.abs(offset) * 0.05})
-    `;
-
-    card.style.opacity = offset < 0 ? 0 : 1;
-    card.style.zIndex = cards.length - index;
-  });
+function updateSlider() {
+  slider.style.transform = `translateX(-${currentIndex * 100}%)`;
 }
 
-renderCards();
+nextBtn.addEventListener("click", () => {
+  currentIndex = (currentIndex + 1) % totalCards;
+  updateSlider();
+});
 
-/* Lock scroll ONLY when section fully fills viewport */
-function checkLock() {
-
-  if (!stackSection) return;
-
-  const rect = stackSection.getBoundingClientRect();
-  const sectionCenter = rect.top + rect.height / 2;
-  const viewportCenter = window.innerHeight / 2;
-
-  const distance = Math.abs(sectionCenter - viewportCenter);
-
-  if (distance < 5 && !locked) {
-    locked = true;
-    lenis.stop();
-  }
-
-}
-
-function unlock() {
-  locked = false;
-  lenis.start();
-}
-
-/* Wheel card navigation */
-function handleWheel(e) {
-
-  if (!locked) return;
-
-  e.preventDefault();
-
-  if (animating) return;
-
-  animating = true;
-
-  if (e.deltaY > 0 && currentIndex < cards.length - 1) {
-    currentIndex++;
-  } 
-  else if (e.deltaY < 0 && currentIndex > 0) {
-    currentIndex--;
-  } 
-  else {
-    unlock();
-    animating = false;
-    return;
-  }
-
-  renderCards();
-
-  setTimeout(() => {
-    animating = false;
-  }, 500);
-}
-
-window.addEventListener("wheel", handleWheel, { passive: false });
-
-lenis.on("scroll", checkLock);
+prevBtn.addEventListener("click", () => {
+  currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+  updateSlider();
+});
 
 
 
@@ -152,38 +87,38 @@ lenis.on("scroll", checkLock);
    CINEMATIC SCROLL EFFECT
 ========================= */
 
-const sections = document.querySelectorAll("section");
+// const sections = document.querySelectorAll("section");
 
-function cinematicScroll() {
+// function cinematicScroll() {
 
-  const windowH = window.innerHeight;
+//   const windowH = window.innerHeight;
 
-  sections.forEach(section => {
+//   sections.forEach(section => {
 
-    if (section.classList.contains("journey-stack-section")) return;
+//     if (section.classList.contains("journey-stack-section")) return;
 
-    const inner = section.querySelector(".section-inner");
-    if (!inner) return;
+//     const inner = section.querySelector(".section-inner");
+//     if (!inner) return;
 
-    const rect = section.getBoundingClientRect();
+//     const rect = section.getBoundingClientRect();
 
-    if (rect.top < windowH && rect.bottom > 0) {
+//     if (rect.top < windowH && rect.bottom > 0) {
 
-      const progress = rect.top / windowH;
+//       const progress = rect.top / windowH;
 
-      inner.style.transform =
-        `translateY(${progress * 30}px) scale(${1 - Math.abs(progress) * 0.03})`;
+//       inner.style.transform =
+//         `translateY(${progress * 30}px) scale(${1 - Math.abs(progress) * 0.03})`;
 
-    } else {
-      inner.style.transform = "translateY(0px) scale(1)";
-    }
+//     } else {
+//       inner.style.transform = "translateY(0px) scale(1)";
+//     }
 
-  });
+//   });
 
-}
+// }
 
-lenis.on("scroll", cinematicScroll);
-cinematicScroll();
+// lenis.on("scroll", cinematicScroll);
+// cinematicScroll();
 
 
 
@@ -224,3 +159,39 @@ window.addEventListener("mousemove", (e) => {
     }
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+const weddingDate = new Date("June 16, 2026 00:00:00").getTime();
+
+const timer = setInterval(function () {
+
+  const now = new Date().getTime();
+  const distance = weddingDate - now;
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById("days").innerHTML = days;
+  document.getElementById("hours").innerHTML = hours;
+  document.getElementById("minutes").innerHTML = minutes;
+  document.getElementById("seconds").innerHTML = seconds;
+
+  if (distance < 0) {
+    clearInterval(timer);
+    document.querySelector(".countdown-boxes").innerHTML = "<h2>We Are Married ❤️</h2>";
+  }
+
+}, 1000);

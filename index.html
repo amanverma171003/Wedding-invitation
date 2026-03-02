@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -17,7 +17,11 @@
         <div class="particles"></div>
 
         <div class="section-inner hero-content">
-            <h1 class="couple-name">Aarav & Priya</h1>
+            <h1 class="couple-name">
+                Aarav 
+                <i class="fa-solid fa-heart"></i>         
+                Priya
+            </h1>
             <p class="tagline">Two Souls, One Heart</p>
             <p class="sub-text">Are Getting Married!</p>
             <button class="save-btn">Save the Date</button>
@@ -28,6 +32,8 @@
     <section class="journey-stack-section">
 
         <div class="stack-cards-container">
+
+            <button class="slider-btn prev">‹</button>
 
             <div class="stack-cards">
 
@@ -103,6 +109,8 @@
 
             </div>
 
+            <button class="slider-btn next">›</button>
+
         </div>
 
     </section>
@@ -115,7 +123,7 @@
 
             <div class="events-container">
 
-            <div class="event-card">
+            <div class="event-card engagement">
 
                 <!-- Decorative Borders -->
                 <img src="assets/images/card-border.png" class="ornament ornament-tl">
@@ -125,6 +133,8 @@
                 <div class="event-content">
                     <h3>Engagement</h3>
                     <p>A promise of forever begins.</p>
+                    <p style="margin-top: 35px;">Date- 14 june 2026</p>
+                    <p style="margin-top: 25px;">Venue - </p>
                 </div>
 
                 <div class="event-image">
@@ -133,7 +143,7 @@
 
             </div>
 
-            <div class="event-card">
+            <div class="event-card haldi">
 
                 <!-- Decorative Borders -->
                 <img src="assets/images/card-border.png" class="ornament ornament-tl">
@@ -142,6 +152,8 @@
                 <div class="event-content">
                     <h3>Haldi</h3>
                     <p>A splash of yellow joy and laughter.</p>
+                    <p style="margin-top: 15px;">Date- 13 june 2026</p>
+                    <p style="margin-top: 25px;">Venue - </p>
                 </div>
 
                 <div class="event-image">
@@ -150,7 +162,7 @@
 
             </div>
 
-            <div class="event-card">
+            <div class="event-card mehndi">
 
                  <!-- Decorative Borders -->
                 <img src="assets/images/card-border.png" class="ornament ornament-tl">
@@ -160,6 +172,8 @@
                 <div class="event-content">
                     <h3>Mehndi</h3>
                     <p>Hands painted with love.</p>
+                    <p style="margin-top: 35px;">Date- 13 june 2026</p>
+                    <p style="margin-top: 25px;">Venue - </p>
                 </div>
 
                 <div class="event-image">
@@ -168,7 +182,7 @@
 
             </div>
 
-            <div class="event-card">
+            <div class="event-card wedding">
 
                  <!-- Decorative Borders -->
                 <img src="assets/images/card-border.png" class="ornament ornament-tl">
@@ -179,6 +193,8 @@
                 <div class="event-content">
                     <h3>Wedding</h3>
                     <p>The beginning of forever.</p>
+                    <p style="margin-top: 35px;">Date- 16 june 2026</p>
+                    <p style="margin-top: 25px;">Venue - </p>
                 </div>
 
                 <div class="event-image">
@@ -221,6 +237,26 @@
                     <img src="assets/images/herobg.png">
                 </div>
 
+                <div class="gallery-card small style1">
+                    <img src="assets/images/engagement.png">
+                </div>
+
+                <div class="gallery-card medium style2">
+                    <img src="assets/images/mehndi.png">
+                </div>
+
+                <div class="gallery-card small style3">
+                    <img src="assets/images/haldi.png">
+                </div>
+
+                <div class="gallery-card large style4">
+                    <img src="assets/images/wedding.png">
+                </div>
+
+                <div class="gallery-card small style5">
+                    <img src="assets/images/herobg.png">
+                </div>
+
                 <!-- Duplicate for seamless loop -->
                 <div class="gallery-card medium style1">
                     <img src="assets/images/engagement.png">
@@ -242,29 +278,124 @@
                     <img src="assets/images/herobg.png">
                 </div>
 
+                <div class="gallery-card small style1">
+                    <img src="assets/images/engagement.png">
+                </div>
+
+                <div class="gallery-card medium style2">
+                    <img src="assets/images/mehndi.png">
+                </div>
+
+                <div class="gallery-card small style3">
+                    <img src="assets/images/haldi.png">
+                </div>
+
+                <div class="gallery-card large style4">
+                    <img src="assets/images/wedding.png">
+                </div>
+
+                <div class="gallery-card small style5">
+                    <img src="assets/images/herobg.png">
+                </div>
+
             </div>
         </div>
 
     </section>
 
     <!-- VENUE -->
-    <section class="venue">
-        <div class="section-inner">
-            <h2 class="section-title">Wedding Venue</h2>
+    <section class="venue-section">
+
+        <div class="venue-overlay"></div>
+        <div class="venue-container">
+
+            <!-- LEFT SIDE -->
+            <div class="venue-left">
+
+            <h2 class="venue-title">Wedding Venue</h2>
+            <div class="venue-divider"><img src="/assets/images/venr.png"></div>
+
+            <h3 class="venue-name">Royal Garden Palace</h3>
+
+            <p class="venue-desc">
+                A breathtaking celebration amidst candlelight
+                and timeless elegance.
+            </p>
+
+            <ul class="venue-info">
+                <li><i class="fa-regular fa-calendar"></i> Date: 25th December 2026</li>
+                <li><i class="fa-regular fa-clock"></i> Time: 7:00 PM onwards</li>
+                <li><i class="fa-solid fa-location-crosshairs"></i> Location: Indore, Madhya Pradesh</li>
+            </ul>
+
+            </div>
+
+            <!-- RIGHT SIDE -->
+            
+
+                <div class="venue-right">
+
+        
+
+                     <!-- Google Iframe Area -->
+                        <div class="card-map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3678.7715024473655!2d75.9382115!3d22.773859599999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39631d0bffffffff%3A0x36fb28f4dcddd686!2sSheraton%20Grand%20Palace%20Indore!5e0!3m2!1sen!2sin!4v1772452289811!5m2!1sen!2sin" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+
+                        <div class="map-bt"><a href="#" class="venue-btn">Get Directions</a></div>
+
+                        
+
+                   
+                </div>
+
+            
         </div>
+
     </section>
 
-    <!-- COUNTDOWN -->
-    <section class="countdown">
-        <div class="section-inner">
-            <h2 class="section-title">Counting Down</h2>
+    <!-- COUNTDOWN SECTION -->
+    <section class="countdown-section">
+
+        <div class="countdown-overlay"></div>
+        <div class="countdown-overlay"></div>
+        <div class="countdown-container">
+
+            <h2 class="countdown-title">The Big Day Awaits</h2>
+            <p class="countdown-date">16 June 2026</p>
+
+            <div class="countdown-boxes">
+
+            <div class="time-box">
+                <span id="days">00</span>
+                <p>Days</p>
+            </div>
+
+            <div class="time-box">
+                <span id="hours">00</span>
+                <p>Hours</p>
+            </div>
+
+            <div class="time-box">
+                <span id="minutes">00</span>
+                <p>Minutes</p>
+            </div>
+
+            <div class="time-box">
+                <span id="seconds">00</span>
+                <p>Seconds</p>
+            </div>
+
+            </div>
+
         </div>
+
     </section>
 
     <div class="fairy-container"></div>
 
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
     <script src="script.js"></script>
-
+    
 </body>
 </html>

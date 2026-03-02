@@ -94,13 +94,57 @@ section {
     font-family: 'Great Vibes', cursive;
     font-size: 4.8rem;
     letter-spacing: 2px;
-    margin-bottom: 10px;
-    color: #fffaf2;
-    text-shadow:
-        0 4px 15px rgba(0,0,0,0.7),
-        0 0 25px rgba(255,215,120,0.4),
-        0 0 45px rgba(255,215,120,0.25);
+
+    background: linear-gradient(
+        90deg,
+        #fffaf2,
+        #ffe9b0,
+        #e7c81d,
+        #f0d6ac
+    );
+    background-size: 300% 300%;
+
+    background-clip: text;            /* important */
+    -webkit-background-clip: text;    /* important */
+
+    color: transparent;               /* important */
+    -webkit-text-fill-color: transparent;
+
+    animation: shimmerGold 6s ease-in-out infinite;
 }
+
+
+.heart-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 20px;
+}
+
+.gold-heart {
+    fill: #d4af37; /* solid gold */
+    filter: drop-shadow(0 0 10px rgba(255,215,0,0.7))
+            drop-shadow(0 0 25px rgba(255,215,0,0.4));
+    animation: heartBeat 2.5s ease-in-out infinite;
+}
+
+/* Text inside heart */
+.weds-text {
+    position: absolute;
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: white;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(255,215,0,0.7);
+}
+
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
+
 
 .tagline {
     font-family: 'Playfair Display', serif;
@@ -115,33 +159,48 @@ section {
     font-size: 1rem;
     letter-spacing: 2px;
     margin-bottom: 30px;
-    color: #ffe8c7;
+    color: #ecca9c;
     text-shadow: 0 4px 12px rgba(0,0,0,0.6);
 }
 
 /* Button */
 
 .save-btn {
-    padding: 14px 38px;
+    padding: 12px 34px;
     border-radius: 40px;
-    border: 1px solid rgba(255,255,255,0.7);
+
+    /* Soft beige background */
     background: linear-gradient(
-        135deg,
-        rgba(255,215,120,0.9),
-        rgba(198,167,94,0.9)
+        to bottom,
+        #f5e6d3,
+        #eec290
     );
-    color: #2b1a08;
-    font-weight: 600;
-    letter-spacing: 2px;
+
+    /* Thin warm border */
+    border: 2px solid #8b5e3c;
+
+    /* Elegant text */
+    color: #6e4e2e;
+    font-family: 'Playfair Display', serif; /* or any elegant serif */
+    font-weight: 500;
+    letter-spacing: 1px;
+
     cursor: pointer;
-    transition: 0.4s ease;
+    transition: all 0.3s ease;
+
+    /* Soft embossed effect */
     box-shadow:
-        0 10px 30px rgba(255,215,120,0.4),
-        0 0 40px rgba(255,215,120,0.2);
+        inset 0 2px 4px rgba(255,255,255,0.6),
+        inset 0 -2px 4px rgba(0,0,0,0.05),
+        0 3px 6px rgba(0,0,0,0.08);
 }
 
 .save-btn:hover {
-    transform: translateY(-4px);
+    transform: translateY(-2px);
+    box-shadow:
+        inset 0 2px 4px rgba(255,255,255,0.7),
+        inset 0 -2px 6px rgba(0,0,0,0.08),
+        0 6px 12px rgba(0,0,0,0.12);
 }
 
 
@@ -161,7 +220,7 @@ section {
     position: absolute;
     width: 6px;
     height: 6px;
-    background: gold;
+    background: rgb(246, 233, 47);
     border-radius: 50%;
     opacity: 0.4;
     animation: float 12s linear infinite;
@@ -194,13 +253,16 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;   /* VERY IMPORTANT */
+    position: relative;
 }
 
 /* Card stack wrapper */
 .stack-cards {
-    position: relative;
-    width: 650px;
-    height: 420px;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(.22,1,.36,1);
 }
 
 
@@ -211,15 +273,12 @@ section {
 ========================= */
 
 .stack-card {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
+    min-width: 100%;     /* each card takes full slider width */
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    transform-style: preserve-3d;
-    transition: transform 0.7s cubic-bezier(.22,1,.36,1),
-                opacity 0.6s ease;
+    position: relative;  /* not absolute */
 }
 
 .invitation-card {
@@ -361,9 +420,35 @@ section {
     to { background-size: 115%; }
 }
 
-.stack-cards-container {
-    perspective: 1200px;
+
+
+/* Slider Buttons */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid #d8b88a;
+
+    font-size: 28px;
+    color: #7a4d2c;
+    cursor: pointer;
+
+    transition: 0.3s ease;
 }
+
+.slider-btn:hover {
+    background: #f5e6d3;
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
 
 
 
@@ -382,10 +467,12 @@ section {
 ========================= */
 
 .events-section {
-  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
   padding: 100px 8%;
   position: relative;
   background: url("assets/images/journey.png") center/cover no-repeat;
+  background-attachment: scroll;
 }
 
 .events-container {
@@ -412,46 +499,52 @@ section {
 }
 
 /* Card */
+/* =========================
+   EVENTS – ELEGANT + REVEAL
+========================= */
+
 .event-card {
   position: relative;
-  height: 380px;
-  border-radius: 25px;
+  height: 400px;
+  border-radius: 28px;
   overflow: hidden;
-  background: linear-gradient(145deg, #fff9f0, #fdf1e4);
-  box-shadow: 0 20px 60px rgba(150,110,60,0.25);
-  transition: 0.6s cubic-bezier(.22,1,.36,1);
+  background: #f8f1e7;
+  box-shadow: 
+    0 15px 40px rgba(160,120,70,0.25),
+    inset 0 0 0 1px rgba(212,175,55,0.15);
+  transition: all 0.6s ease;
 }
 
-/* Text Content */
+/* Content */
 .event-content {
   position: relative;
-  z-index: 2;
-  padding: 50px 30px;
+  z-index: 3;
+  padding: 60px 35px;
   text-align: center;
   transition: 0.6s ease;
 }
 
 .event-content h3 {
   font-family: 'Great Vibes', cursive;
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   color: #7a4d2c;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  transition: 0.6s ease;
 }
 
 .event-content p {
   font-family: 'Playfair Display', serif;
-  font-size: 1rem;
-  color: #6a4a2f;
+  color: #6b4b30;
+  margin-bottom: 18px;
+  transition: 0.6s ease;
 }
 
-/* Image container */
+/* Image */
 .event-image {
   position: absolute;
-  bottom: -100%;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transition: 0.8s cubic-bezier(.22,1,.36,1);
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease;
   z-index: 1;
 }
 
@@ -461,31 +554,80 @@ section {
   object-fit: cover;
 }
 
-/* Soft overlay for readability */
+/* Default overlay */
 .event-image::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0,0,0,0.4),
-    rgba(0,0,0,0.05)
-  );
+  background: rgba(0,0,0,0.3);
+  transition: 0.6s ease;
 }
 
-/* Hover Effect */
+/* Theme overlays */
+.event-card.haldi .event-image::after {
+  background: rgba(180, 140, 20, 0.55);
+}
+
+.event-card.mehndi .event-image::after {
+  background: rgba(40, 90, 40, 0.55);
+}
+
+.event-card.sangeet .event-image::after {
+  background: rgba(120, 20, 20, 0.55);
+}
+
+.event-card.engagement .event-image::after {
+  background: rgba(120, 80, 40, 0.45);
+}
+
+.event-card.wedding .event-image::after {
+  background: rgba(140, 110, 80, 0.45);
+}
+
+/* Hover Reveal */
 .event-card:hover .event-image {
-  bottom: 0;
+  opacity: 1;
 }
 
-.event-card:hover .event-content {
-  transform: translateY(-40px);
-  color: white;
+.event-card:hover .event-content h3,
+.event-card:hover .event-content p {
+  color: #fffaf2;
+}
+
+.event-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 
+    0 20px 60px rgba(160,120,70,0.35);
 }
 
 .event-card:hover h3,
 .event-card:hover p {
   color: #fffaf2;
+}
+
+
+/* =========================
+   EVENT COLOR THEMES
+========================= */
+
+/* Engagement – Champagne */
+.event-card.engagement {
+  background: linear-gradient(145deg, #ffe5e5, #e8a2a2);
+}
+
+/* Haldi – Golden Glow */
+.event-card.haldi {
+  background: linear-gradient(145deg, #fff4cc, #f5d36a);
+}
+
+/* Mehndi – Greenish Elegant */
+.event-card.mehndi {
+  background: linear-gradient(145deg, #eaf5e3, #b9d6a3);
+}
+
+/* Wedding – Royal Ivory */
+.event-card.wedding {
+  background: linear-gradient(145deg, #fdf7f0, #f0d592);
 }
 
 
@@ -576,15 +718,15 @@ section {
 /* Moving track */
 .gallery-track {
   display: flex;
-  gap: 60px;
+  gap: 70px;
   width: max-content;
-  animation: moveGallery 40s linear infinite;
+  animation: moveGallery 22s linear infinite; /* Elegant pace */
 }
 
-/* Pause on hover */
+/* Pause on hover
 .horizontal-gallery:hover .gallery-track {
   animation-play-state: paused;
-}
+} */
 
 /* Strong clean stagger */
 .gallery-card:nth-child(1) { transform: translateY(-80px); }
@@ -592,13 +734,22 @@ section {
 .gallery-card:nth-child(3) { transform: translateY(-40px); }
 .gallery-card:nth-child(4) { transform: translateY(70px); }
 .gallery-card:nth-child(5) { transform: translateY(-20px); }
-
-/* Repeat pattern for duplicated set */
 .gallery-card:nth-child(6) { transform: translateY(-80px); }
 .gallery-card:nth-child(7) { transform: translateY(40px); }
 .gallery-card:nth-child(8) { transform: translateY(-40px); }
 .gallery-card:nth-child(9) { transform: translateY(70px); }
-.gallery-card:nth-child(10) { transform: translateY(-20px); }
+.gallery-card:nth-child(10){ transform: translateY(-20px); }
+/* Repeat pattern for duplicated set */
+.gallery-card:nth-child(11) { transform: translateY(-80px); }
+.gallery-card:nth-child(12) { transform: translateY(40px); }
+.gallery-card:nth-child(13) { transform: translateY(-40px); }
+.gallery-card:nth-child(14) { transform: translateY(70px); }
+.gallery-card:nth-child(15) { transform: translateY(-20px); }
+.gallery-card:nth-child(16) { transform: translateY(-80px); }
+.gallery-card:nth-child(17) { transform: translateY(40px); }
+.gallery-card:nth-child(18) { transform: translateY(-40px); }
+.gallery-card:nth-child(19) { transform: translateY(70px); }
+.gallery-card:nth-child(20){ transform: translateY(-20px); }
 
 .gallery-card.small {
   width: 200px;
@@ -631,6 +782,393 @@ section {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   ROYAL VENUE SECTION
+========================= */
+
+.venue-section {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background: url("assets/images/ven.png") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 8%;
+  z-index: 0;
+}
+
+.venue-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.04);
+}
+
+
+
+.venue-container {
+  width: 100%;
+  max-width: 1300px;
+
+  display: flex;
+  align-items: stretch;   /* makes both sides equal height */
+  justify-content: space-between;
+
+  gap: 60px;
+  position: relative;
+  z-index: 2;
+
+  height: 80vh;   /* controls full vertical space */
+}
+
+/* LEFT SIDE */
+
+.venue-left, .venue-right {
+  flex: 1;
+  color: #6e4b1f;
+  flex: 0 0 50%;
+  height: 100%;
+}
+
+.venue-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.venue-divider img {
+  width: 100%;   
+  height: 30px;
+  display: block;
+}
+
+.venue-name {
+  font-size: 2.4rem;
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 15px;
+}
+
+.venue-desc {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.venue-info {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.venue-info li {
+  margin-bottom: 12px;
+  font-size: 1rem;
+}
+
+.venue-btn {
+  margin-top: 20px;
+  justify-items: center;
+  align-items: center;
+  position: relative;
+  display: inline-block;
+  padding: 14px 40px;
+  border-radius: 40px;
+  background: linear-gradient(135deg, #f8dc9a, #b1893f);
+  color: #4a2e10;
+  font-weight: 600;
+  text-decoration: none;
+  overflow: hidden;
+  transition: 0.4s ease;
+  box-shadow: 0 10px 30px rgba(200,159,85,0.5);
+}
+
+/* Shine animation */
+.venue-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.7) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  transform: skewX(-20deg);
+}
+
+.venue-btn:hover::before {
+  animation: shine 1s forwards;
+}
+
+@keyframes shine {
+  100% {
+    left: 130%;
+  }
+}
+
+.venue-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(200,159,85,0.7);
+}
+
+/* RIGHT SIDE */
+.venue-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  /* map top, button bottom */
+  background: rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 16px;
+
+  padding: 25px;
+}
+
+/* ===== MAP AREA (Green Skeleton Replacement) ===== */
+.card-map {
+  flex: 1;            /* takes remaining height */
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card-map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+
+.map-bt {
+  width: 100%;
+  
+}
+
+
+
+
+
+
+/* =========================
+   RESPONSIVE - MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .venue-section {
+    padding: 60px 6%;
+  }
+
+  .venue-container {
+    flex-direction: column;   /* stack vertically */
+    height: auto;             /* remove fixed height */
+    gap: 40px;
+  }
+
+  .venue-left,
+  .venue-right {
+    flex: 1 1 100%;
+    width: 100%;
+    height: auto;
+  }
+
+  .venue-title {
+    font-size: 2.2rem;
+  }
+
+  .venue-name {
+    font-size: 1.8rem;
+  }
+
+  .venue-desc {
+    font-size: 0.95rem;
+  }
+
+  .venue-divider img {
+    width: 140px;
+    height: auto;
+  }
+
+  .venue-right {
+    padding: 20px;
+  }
+
+  .card-map {
+    height: 250px;  /* fixed mobile height */
+  }
+
+  .venue-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   COUNTDOWN SECTION
+========================= */
+
+.countdown-section {
+  position: relative;
+  min-height: 100vh;
+  background: url("assets/images/ven.png") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 8%;
+  text-align: center;
+  overflow: hidden;
+}
+
+.countdown-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+}
+
+.countdown-container {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+}
+
+.countdown-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.countdown-date {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  letter-spacing: 2px;
+}
+
+.countdown-boxes {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.time-box {
+  width: 130px;
+  height: 130px;
+
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.3);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+.time-box span {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.time-box p {
+  margin-top: 5px;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+
+@media (max-width: 768px) {
+
+  .countdown-title {
+    font-size: 2rem;
+  }
+
+  .time-box {
+    width: 100px;
+    height: 100px;
+  }
+
+  .time-box span {
+    font-size: 1.8rem;
+  }
+
+}
+
+
+.sparkles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.sparkles::before,
+.sparkles::after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background-image: radial-gradient(rgba(255,215,0,0.8) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: sparkleMove 25s linear infinite;
+  opacity: 0.4;
+}
+
+.sparkles::after {
+  animation-duration: 40s;
+  opacity: 0.25;
+}
+
+@keyframes sparkleMove {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+
 
 
 
